@@ -1,4 +1,6 @@
-﻿namespace DomainDrivenDesign;
+﻿using System.Xml.Linq;
+
+namespace DomainDrivenDesign;
 class Program
 {
     static void Main(string[] args)
@@ -6,4 +8,3 @@ class Program
         Console.WriteLine("Hello, World!");
     }
 }
-
