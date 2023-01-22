@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="2_1\" />
+    <None Remove="2_3\" />
+    <None Remove="2_4\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="2_1\" />
+    <Folder Include="2_3\" />
+    <Folder Include="2_4\" />
+  </ItemGroup>
+</Project>
