@@ -1,40 +1,52 @@
 ﻿using System;
-namespace DomainDrivenDesign.List2_4
+
+namespace DomainDrivenDesign.List2_4;
+
+// 通貨と量を扱うクラス
+public record class Money
 {
-    // 通貨と量を扱うクラス
-    public record class Money
+    public int Amount { get; init; }
+    public string Currency { get; init; }
+
+    public Money(int amount, string currency)
     {
-        public int Amount { get; init; }
-        public string Currency { get; init; }
+        if (string.IsNullOrEmpty(currency))
+            throw new ArgumentException($"単位なし");
 
-        public Money(int amount, string currency)
-        {
-            if (string.IsNullOrEmpty(currency))
-                throw new ArgumentException($"単位なし");
-
-            Amount = amount;
-            Currency = currency;
-        }
-
-        public Money Add(Money money)
-        {
-            if (Currency != money.Currency)
-                throw new ArgumentException($"通貨単位が異なっている");
-
-            return this with { Amount = Amount + money.Amount, };
-        }
+        Amount = amount;
+        Currency = currency;
     }
 
-    // メモ：コンストラクタでプロパティを指定してしまうと入力チェックしにくい
-    public record class Money2(int Amount, string Currency)
+    public Money Add(Money money)
     {
-        public Money2 Add(Money2 money)
-        {
-            if (Currency != money.Currency)
-                throw new ArgumentException($"通貨単位が異なっている");
+        if (Currency != money.Currency)
+            throw new ArgumentException($"通貨単位が異なっている");
 
-            return this with { Amount = Amount + money.Amount, };
-        }
+        return this with { Amount = Amount + money.Amount, };
+    }
+
+    public Money Sub(Money money)
+    {
+        if (Currency != money.Currency)
+            throw new ArgumentException($"通貨単位が異なっている");
+
+        return this with { Amount = Amount - money.Amount, };
+    }
+
+    public static Money operator+ (Money money1, Money money2) => money1.Add(money2);
+
+    public static Money operator- (Money money1, Money money2) => money1.Sub(money2);
+}
+
+// メモ：コンストラクタでプロパティを指定してしまうと入力チェックしにくい
+public record class Money2(int Amount, string Currency)
+{
+    public Money2 Add(Money2 money)
+    {
+        if (Currency != money.Currency)
+            throw new ArgumentException($"通貨単位が異なっている");
+
+        return this with { Amount = Amount + money.Amount, };
     }
 }
 
