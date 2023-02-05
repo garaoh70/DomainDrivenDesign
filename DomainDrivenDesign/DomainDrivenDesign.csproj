@@ -11,10 +11,18 @@
     <None Remove="2_1\" />
     <None Remove="2_3\" />
     <None Remove="2_4\" />
+    <None Remove="2_5\" />
+    <None Remove="4_4\" />
+    <None Remove="LiteDB" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="2_1\" />
     <Folder Include="2_3\" />
     <Folder Include="2_4\" />
+    <Folder Include="2_5\" />
+    <Folder Include="4_4\" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="LiteDB" Version="5.0.15" />
   </ItemGroup>
 </Project>
