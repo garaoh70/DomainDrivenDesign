@@ -1,5 +1,4 @@
-﻿using System;
-using DomainDrivenDesign.List5_4.Interfaces;
+﻿using DomainDrivenDesign.List5_4.Interfaces;
 
 namespace DomainDrivenDesign.List5_4;
 

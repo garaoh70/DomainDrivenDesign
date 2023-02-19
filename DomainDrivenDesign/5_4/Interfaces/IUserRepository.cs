@@ -1,5 +1,4 @@
-﻿using System;
-namespace DomainDrivenDesign.List5_4.Interfaces;
+﻿namespace DomainDrivenDesign.List5_4.Interfaces;
 
 public interface IUserRepository
 {
