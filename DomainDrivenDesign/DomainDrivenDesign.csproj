@@ -17,6 +17,10 @@
     <None Remove="5_4\" />
     <None Remove="Microsoft.Extensions.DependencyInjection" />
     <None Remove="5_4\Interfaces\" />
+    <None Remove="5_7\" />
+    <None Remove="Microsoft.EntityFrameworkCore.Sqlite" />
+    <None Remove="Microsoft.EntityFrameworkCore.Tools" />
+    <None Remove="Microsoft.EntityFrameworkCore" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="2_1\" />
@@ -26,9 +30,12 @@
     <Folder Include="4_4\" />
     <Folder Include="5_4\" />
     <Folder Include="5_4\Interfaces\" />
+    <Folder Include="5_7\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="LiteDB" Version="5.0.15" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="7.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="7.0.3" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.3" />
   </ItemGroup>
 </Project>
