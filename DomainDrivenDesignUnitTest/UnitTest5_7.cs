@@ -111,23 +111,34 @@ public class UnitTest5_7
             Assert.That(model.UserName, Is.EqualTo("garaoh71"));
         }
 
+        // ToDo: 悲観的排他制御、客観的排他制御を試す
         // テーブルの多重オープンは？
         using (var db = new DatabaseContext(_path!))
         {
+            // 自分でトランザクションを開始
+            using var transaction = db.Database.BeginTransaction();
+
             var count = db.Users.Count();
             Assert.That(count, Is.EqualTo(1));
 
             var model = db.Users.Single();
             Assert.That(model.UserName, Is.EqualTo("garaoh71"));
 
-            // ToDo: 多重オープンできている。解決すべし
+            model.UserName = "garaoh72";
+            db.SaveChanges();
+
             using (var db2 = new DatabaseContext(_path!))
             {
                 var count2 = db2.Users.Count();
                 Assert.That(count2, Is.EqualTo(1));
 
+                // 更新されていない
                 var model2 = db2.Users.Single();
                 Assert.That(model2.UserName, Is.EqualTo("garaoh71"));
+
+                // 書き込みエラー、タイムアウト時間まで待っている
+                model2.UserName = "garaoh75";
+                Assert.Throws<Microsoft.EntityFrameworkCore.DbUpdateException>(() => db2.SaveChanges());
             }
         }
     }

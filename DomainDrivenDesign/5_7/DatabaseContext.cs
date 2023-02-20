@@ -16,7 +16,7 @@ public class DatabaseContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionBuilder)
     {
-        var connectionString = new SqliteConnectionStringBuilder { DataSource = @$"{_pathName}" }.ToString();
+        var connectionString = new SqliteConnectionStringBuilder { DataSource = @$"{_pathName}", DefaultTimeout = 1, }.ToString();
         optionBuilder.UseSqlite(new SqliteConnection(connectionString));
     }
 }
